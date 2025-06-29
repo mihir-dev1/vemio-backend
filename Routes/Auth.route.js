@@ -1,9 +1,6 @@
 const express = require('express');
 const router = express.Router();
 exports.router = router;
-const createError = require('http-errors');
-const User =  require('../models/User.Model');
-const { authSchema, authLoginSchema } = require('../helpers/validation_schema');
 const { signAccessToken, signRefreshToken, verifyRefreshToken} = require('../helpers/jwt_helper');
 const AuthController = require('../Controllers/Auth.Controller');
 
