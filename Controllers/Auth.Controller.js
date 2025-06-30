@@ -23,10 +23,17 @@ const register = async (req,res,next) => {
                 termsAccepted
             });
             const savedUser = await user.save();
+<<<<<<< HEAD
             const accessToken = await signAccessToken(savedUser.id);
             const refreshToken = await signRefreshToken(savedUser.id);
 
             res.status(201).send({ message: 'User created successfully', savedUser,accessToken, refreshToken });
+=======
+            // const accessToken = await signAccessToken(savedUser.id);
+            // const refreshToken = await signRefreshToken(savedUser.id);
+
+            res.status(201).send({ message: 'User created successfully', savedUser });
+>>>>>>> df59145b976ae30a04258f4be3b0c91b95835f49
         }
     } catch(error) {
         if(error.isJoi === true) error.status = 422;
@@ -77,7 +84,7 @@ const logout = async (req,res,next) => {
         // For example, you could delete it from a Redis store or a database collection
         await redisClient.del(`refresh_token:${userId}`);
         await redisClient.del(`access_token:${userId}`);
-        console.log(`User ${userId} logged out successfully`);
+        // console.log(`User ${userId} logged out successfully`);
         // Send a response to the client indicating successful logout     
         res.send({ message: 'Logged out successfully' });
     } catch(error) {
